@@ -7,7 +7,45 @@
 </head>
 <body>
     <h1>Kvadrātvienādojuma risinātājs</h1>
-    <p><input><input><input></p>
-    <button></button>
+    <p><input placeholder="a" id="aInput"><input placeholder="b" id="bInput"><input placeholder="c" id="cInput"></p>
+    <button onclick="apreķināt()">Apreķināt</button>
+    <p><span id="results"></span></p>
+    <script>
+      
+        function disk(a,b,c){
+            D=b*b-4*a*c;
+        };
+
+        function saknes(a,b, D){
+            if(d<0){
+                return false;
+            }else{
+                var x1=(-b+Math.sqrt(D))/(2*a);
+                var x2=(-b-Math.sqrt(D))/(2*a);
+                 return [x1,x2];
+            };
+        };
+
+        function apreķināt(){
+            var a=Number(aInput.value);
+            var b=Number(bInput.value);
+            var c=Number(cInput.value);
+
+            if (isNan(a)||isNan(b)||isNan(c)||a===0){
+                results.innerHTML="Lūdzu ievadi korektus koeficientus! (a=/=0)"
+               
+            };
+
+            var atb = saknes(a,b,disk(a,b,c));
+
+            if(atb===false){
+                results.innerHTML="kavdrātvienādojumam nav reālu sakņu.";
+            }else{
+                results.innerHTML=`Saknes: x1 = ${atb[0].toFixed(3)}, x2=${atb[1].toFixed(3)}`;
+            };
+        };
+
+        
+    </script>
 </body>
 </html>
